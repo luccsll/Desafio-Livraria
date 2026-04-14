@@ -1,0 +1,28 @@
+{
+  "name": "desafio-livraria",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts"
+  },
+  "keywords": [],
+  "author": "Lucas Lima",
+  "type": "module",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "prisma": "6.19",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.2.0",
+    "@prisma/client": "6.19",
+    "@types/jsonwebtoken": "^9.0.10",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.4.1",
+    "fastify": "^5.8.4",
+    "jsonwebtoken": "^9.0.3",
+    "tsx": "^4.21.0"
+  }
+}
