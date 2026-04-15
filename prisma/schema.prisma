@@ -15,13 +15,14 @@ datasource db {
 }
 
 model Author {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  name  String
-  email String @unique
-  createdBy String
-  editedBy String?
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String   @unique
 
-  books Book[]
+  createdBy String?  // opcional por enquanto
+  editedBy  String?  // opcional
+
+  books     Book[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -33,36 +34,39 @@ model Book {
   isbn        String   @unique
   publishedAt DateTime
   category    String
-  createdBy   String
-  editedBy    String?
 
-  authorId String @db.ObjectId
-  author   Author @relation(fields: [authorId], references: [id])
+  createdBy   String?  
+  editedBy    String?  
 
-  publisherId String    @db.ObjectId
+  authorId    String   @db.ObjectId
+  author      Author   @relation(fields: [authorId], references: [id])
+
+  publisherId String   @db.ObjectId
   publisher   Publisher @relation(fields: [publisherId], references: [id])
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Publisher {
-  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
   name          String
-  publisherCode String @unique
-  createdBy     String
-  editedBy      String?
+  publisherCode String   @unique
 
-  books Book[]
+  createdBy     String? 
+  editedBy      String?  
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  books         Book[]
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model User {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  name String
-  email String @unique
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  email        String   @unique
   passwordHash String
-  createdAt DateTime @default(now())
+
+  createdAt    DateTime @default(now())
 }
